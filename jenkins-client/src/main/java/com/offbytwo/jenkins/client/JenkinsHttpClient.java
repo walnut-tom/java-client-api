@@ -151,7 +151,7 @@ public class JenkinsHttpClient implements JenkinsHttpConnection {
             httpResponseValidator.validateResponse(response);
             return objectFromResponse(cls, response);
         } finally {
-            EntityUtils.consume(response.getEntity());
+            EntityUtils.consumeQuietly(response.getEntity());
             releaseConnection(getMethod);
         }
     }
@@ -170,7 +170,7 @@ public class JenkinsHttpClient implements JenkinsHttpConnection {
             httpResponseValidator.validateResponse(response);
             return IOUtils.toString(response.getEntity().getContent());
         } finally {
-            EntityUtils.consume(response.getEntity());
+            EntityUtils.consumeQuietly(response.getEntity());
             releaseConnection(getMethod);
         }
 
@@ -268,7 +268,7 @@ public class JenkinsHttpClient implements JenkinsHttpConnection {
                 return null;
             }
         } finally {
-            EntityUtils.consume(response.getEntity());
+            EntityUtils.consumeQuietly(response.getEntity());
             releaseConnection(request);
         }
     }
@@ -314,7 +314,7 @@ public class JenkinsHttpClient implements JenkinsHttpConnection {
         try {
             httpResponseValidator.validateResponse(response);
         } finally {
-            EntityUtils.consume(response.getEntity());
+            EntityUtils.consumeQuietly(response.getEntity());
             releaseConnection(request);
         }
     }
@@ -364,7 +364,7 @@ public class JenkinsHttpClient implements JenkinsHttpConnection {
             httpResponseValidator.validateResponse(response);
             return IOUtils.toString(response.getEntity().getContent());
         } finally {
-            EntityUtils.consume(response.getEntity());
+            EntityUtils.consumeQuietly(response.getEntity());
             releaseConnection(request);
         }
     }
@@ -395,7 +395,7 @@ public class JenkinsHttpClient implements JenkinsHttpConnection {
             httpResponseValidator.validateResponse(response);
             return IOUtils.toString(response.getEntity().getContent());
         } finally {
-            EntityUtils.consume(response.getEntity());
+            EntityUtils.consumeQuietly(response.getEntity());
             releaseConnection(request);
         }
     }
